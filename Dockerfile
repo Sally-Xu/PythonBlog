@@ -23,8 +23,8 @@ COPY ./app /code/app
 WORKDIR /code/app
 
 # set eviroment variables
-ENV EMAIL_USER {SenderEmail}
-ENV EMAIL_PASSWORD {SenderPassword}
+ENV EMAIL_USER test@bolstra.com
+ENV EMAIL_PASSWORD password
 
 # expose port 5000
 EXPOSE 5000
