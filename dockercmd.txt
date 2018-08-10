@@ -1,0 +1,33 @@
+// To build a docker image with name, the last parameter is path of the folder contains the Dockerfile
+docker build -t pythonblogimg .
+
+
+// To run a docker container with local code folder mounted to the container:
+// -id : run interactive mode, non stop
+// -p: mapping port 
+// -v: mount local code folder to the container's root folder
+// --name [container_name] - create container with the given name
+// bash: run bash command to attach to unix shell
+
+docker run -d -p 5000:5000 -v F:/Project/PythonWebApp:/code --name pythonblogctn pythonblogimg
+
+// to inspect a container
+docker inspect [container_id] 
+// or 
+docker inspect pythonblogctn
+
+// To get all container names and their IP addresses in just one single command:
+docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
+
+// to get inside of the running docker container
+docker exec -it pythonblogctn bash
+
+// commands to install docker-ce on ubuntu:
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable"
+$ sudo apt-get update
+$ sudo apt-get install docker-ce
+

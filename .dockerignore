@@ -1,0 +1,3 @@
+# ignore env, .md, .in file
+.vscode
+*/__pycache__
